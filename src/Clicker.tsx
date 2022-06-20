@@ -28,12 +28,15 @@ export default function Clicker() {
   };
 
   return (
-    <div>
+    <div className="game-center">
       <p>{state.id}</p>
       <h1>Clicky</h1>
       <h2>
         <Counter value={state.number} />
       </h2>
+      <p>
+        Total Lifetime: <Counter value={state.totalNumber} />
+      </p>
 
       <p style={{ fontSize: 12 }}>
         {calculateClicksPerSecond()} clicks per second

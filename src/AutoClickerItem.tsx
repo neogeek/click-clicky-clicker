@@ -16,7 +16,7 @@ export default function AutoClickerItem({
       if (item.owned) {
         dispatch({
           type: "autoclick",
-          incrementValue: item.increment * item.owned
+          increment: item.increment * item.owned
         });
       }
     }, item.speed);

@@ -10,14 +10,14 @@ import { has, get, set } from "../utils/localstorage";
 export type State = {
   id: string;
   number: number;
-  increment: number;
+  totalNumber: number;
   speed: number;
   items: Item[];
 };
 
 export type Action = {
   item?: Item;
-  incrementValue?: number;
+  increment?: number;
   cost?: number;
   type: "click" | "autoclick" | "additem" | "reset";
 };
@@ -25,7 +25,7 @@ export type Action = {
 const defaultState: State = {
   id: get("clickerId", uuid()),
   number: 0,
-  increment: 1,
+  totalNumber: 0,
   speed: 1000,
   items: [...items]
 };
@@ -40,18 +40,25 @@ const useClickerReducer = () => {
     (state: State, action: Action) => {
       switch (action.type) {
         case "click": {
-          const updated = { ...state, number: state.number + 1 };
+          const updated = {
+            ...state,
+            number: state.number + 1,
+            totalNumber: state.totalNumber + 1
+          };
 
           set("gamestate", JSON.stringify(updated));
 
           return updated;
         }
         case "autoclick": {
+          if (!action.increment) {
+            throw new Error("Increment missing from request.");
+          }
+
           const updated = {
             ...state,
-            number:
-              state.number +
-              (action.incrementValue ? action.incrementValue : state.increment)
+            number: state.number + action.increment,
+            totalNumber: state.totalNumber + action.increment
           };
 
           set("gamestate", JSON.stringify(updated));
