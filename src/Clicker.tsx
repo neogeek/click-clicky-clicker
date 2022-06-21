@@ -21,10 +21,13 @@ export default function Clicker() {
   const [state, dispatch] = useClickerReducer();
 
   const calculateClicksPerSecond = () => {
-    return state.items.reduce(
-      (prev, curr) => prev + curr.increment * (1000 / curr.speed) * curr.owned,
-      0
-    );
+    return state.items
+      .reduce(
+        (prev, curr) =>
+          prev + curr.increment * (1000 / curr.speed) * curr.owned,
+        0
+      )
+      .toFixed(1);
   };
 
   return (
@@ -46,19 +49,38 @@ export default function Clicker() {
 
       <h2>What're ya buyin?</h2>
 
-      {state.items.map((item, index) => (
-        <div key={index}>
-          <AutoClickerItem item={item} dispatch={dispatch} />
-          <button
-            disabled={calculateItemCost(item) >= state.number}
-            onClick={() => {
-              dispatch({ type: "additem", item: item });
-            }}
-          >
-            Buy ({format(calculateItemCost(item))})
-          </button>
+      <div className="store-wrapper">
+        <div>
+          {state.items.slice(0, 5).map((item, index) => (
+            <div key={index} className="store-item">
+              <AutoClickerItem item={item} dispatch={dispatch} />
+              <button
+                disabled={calculateItemCost(item) >= state.number}
+                onClick={() => {
+                  dispatch({ type: "additem", item: item });
+                }}
+              >
+                Buy ({format(calculateItemCost(item))})
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
+        <div>
+          {state.items.slice(5).map((item, index) => (
+            <div key={index} className="store-item">
+              <AutoClickerItem item={item} dispatch={dispatch} />
+              <button
+                disabled={calculateItemCost(item) >= state.number}
+                onClick={() => {
+                  dispatch({ type: "additem", item: item });
+                }}
+              >
+                Buy ({format(calculateItemCost(item))})
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <h2>Debug</h2>
 

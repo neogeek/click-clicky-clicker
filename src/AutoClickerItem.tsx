@@ -30,6 +30,7 @@ export default function AutoClickerItem({
         {item.name} ({item.owned})
       </h3>
       <p>{item.description}</p>
+      <p style={{ fontSize: 11 }}>{item.increment} clicks per second</p>
     </div>
   );
 }

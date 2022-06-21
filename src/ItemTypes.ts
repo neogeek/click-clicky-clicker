@@ -1,59 +1,115 @@
 import { Item } from "./types";
 
-export const multiplier2: Item = {
-  name: "Multiplier x2",
-  description: " Multiplier goes brrrrr",
+export const clickComrade: Item = {
+  name: "Click Comrade",
+  description: "Why do it yourself when someone else can do it for you!",
   speed: 1000,
-  increment: 2,
-  baseCost: 5,
-  multiplier: 2,
+  increment: 0.1,
+  baseCost: 6,
+  multiplier: 1.25,
   owned: 0
 };
 
-export const multiplier10: Item = {
-  name: "Multiplier x10",
-  description: " Multiplier goes brrrrr",
+export const clickTeam: Item = {
+  name: "Click Team",
+  description: "A whole 10 people are clicking just for you!",
+  speed: 1000,
+  increment: 1,
+  baseCost: 100,
+  multiplier: 1.25,
+  owned: 0
+};
+
+export const clickyCompany: Item = {
+  name: "Clicky Company",
+  description: "Hire 50 people to click at a rate of 50 times per second!",
+  speed: 1000,
+  increment: 5,
+  baseCost: 200,
+  multiplier: 1.35,
+  owned: 0
+};
+
+export const hamClick: Item = {
+  name: "The Hamilton Click",
+  description: "Alexander Clickilton",
   speed: 1000,
   increment: 10,
-  baseCost: 50,
-  multiplier: 2,
+  baseCost: 375,
+  multiplier: 1.35,
   owned: 0
 };
 
-export const multiplier50: Item = {
-  name: "Multiplier x50",
-  description: " Multiplier goes brrrrr",
+export const dubClick: Item = {
+  name: "The Dub Click",
+  description: "",
+  speed: 1000,
+  increment: 20,
+  baseCost: 575,
+  multiplier: 1.35,
+  owned: 0
+};
+
+export const grantClick: Item = {
+  name: "The Grant Click",
+  description:
+    "50 clicks per second for the low low cost of 900 clicks! What a deal!",
   speed: 1000,
   increment: 50,
-  baseCost: 750,
-  multiplier: 3,
+  baseCost: 900,
+  multiplier: 1.35,
   owned: 0
 };
 
-export const multiplier100: Item = {
-  name: "Multiplier x100",
-  description: " Multiplier goes brrrrr",
+export const hundoClick: Item = {
+  name: "Hundo Click",
+  description: "One small step for man, one mondo click for you!",
   speed: 1000,
   increment: 100,
-  baseCost: 10000,
-  multiplier: 3,
+  baseCost: 1700,
+  multiplier: 1.45,
   owned: 0
 };
 
-export const multiplier1000: Item = {
-  name: "Multiplier x1000",
-  description: " Multiplier goes brrrrr",
+export const twoFitty: Item = {
+  name: "Two Fitty Click",
+  description: "Two fitty a second!",
+  speed: 1000,
+  increment: 250,
+  baseCost: 3250,
+  multiplier: 1.5,
+  owned: 0
+};
+
+export const halfThou: Item = {
+  name: "Half Thou",
+  description: "Take 1 thou and just cut it in half",
+  speed: 1000,
+  increment: 500,
+  baseCost: 6250,
+  multiplier: 1.65,
+  owned: 0
+};
+
+export const fullThou: Item = {
+  name: "Full Thou",
+  description: "The full enchilada!",
   speed: 1000,
   increment: 1000,
-  baseCost: 100000,
-  multiplier: 4,
+  baseCost: 12000,
+  multiplier: 1.75,
   owned: 0
 };
 
 export default [
-  multiplier2,
-  multiplier10,
-  multiplier50,
-  multiplier100,
-  multiplier1000
+  clickComrade,
+  clickTeam,
+  clickyCompany,
+  hamClick,
+  dubClick,
+  grantClick,
+  hundoClick,
+  twoFitty,
+  halfThou,
+  fullThou
 ];
