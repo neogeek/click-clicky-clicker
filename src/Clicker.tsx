@@ -1,20 +1,20 @@
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 
-import AutoClickerItem from "./AutoClickerItem";
-import Counter from "./components/Counter";
+import AutoClickerItem from './AutoClickerItem';
+import Counter from './components/Counter';
 
-import { set } from "./utils/localstorage";
+import { set } from './utils/localstorage';
 
-import { format } from "./utils/number";
+import { format } from './utils/number';
 
 import useClickerReducer, {
-  calculateItemCost
-} from "./hooks/useClickerReducer";
+  calculateItemCost,
+} from './hooks/useClickerReducer';
 
-const socket = io("https://tr5qqn.sse.codesandbox.io/");
-socket.on("connect", () => {
-  console.log("yourID:" + socket.id);
-  set("clickerId", socket.id);
+const socket = io('https://tr5qqn.sse.codesandbox.io/');
+socket.on('connect', () => {
+  console.log('yourID:' + socket.id);
+  set('clickerId', socket.id);
 });
 
 export default function Clicker() {
@@ -45,7 +45,7 @@ export default function Clicker() {
         {calculateClicksPerSecond()} clicks per second
       </p>
 
-      <button onClick={() => dispatch({ type: "click" })}>Clicky</button>
+      <button onClick={() => dispatch({ type: 'click' })}>Clicky</button>
 
       <h2>What're ya buyin?</h2>
 
@@ -57,7 +57,7 @@ export default function Clicker() {
               <button
                 disabled={calculateItemCost(item) >= state.number}
                 onClick={() => {
-                  dispatch({ type: "additem", item: item });
+                  dispatch({ type: 'additem', item: item });
                 }}
               >
                 Buy ({format(calculateItemCost(item))})
@@ -72,7 +72,7 @@ export default function Clicker() {
               <button
                 disabled={calculateItemCost(item) >= state.number}
                 onClick={() => {
-                  dispatch({ type: "additem", item: item });
+                  dispatch({ type: 'additem', item: item });
                 }}
               >
                 Buy ({format(calculateItemCost(item))})
@@ -86,7 +86,7 @@ export default function Clicker() {
 
       <button
         onClick={() => {
-          dispatch({ type: "reset" });
+          dispatch({ type: 'reset' });
         }}
       >
         Reset

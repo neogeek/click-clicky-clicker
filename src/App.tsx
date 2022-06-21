@@ -1,7 +1,7 @@
-import "./styles.css";
+import './styles.css';
 
-import Clicker from "./Clicker";
-import PlayerCanvas from "./components/PlayerCanvas";
+import Clicker from './Clicker';
+import PlayerCanvas from './components/PlayerCanvas';
 
 export default function App() {
   return (

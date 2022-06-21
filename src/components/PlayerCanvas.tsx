@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-import { clearCanvas, drawRect } from "pocket-sized-facade.js";
+import { clearCanvas, drawRect } from 'pocket-sized-facade.js';
 
 export default function PlayerCanvas({
-  numberOfPlayers = 0
+  numberOfPlayers = 0,
 }: {
   numberOfPlayers: number;
 }) {
@@ -14,7 +14,7 @@ export default function PlayerCanvas({
   useEffect(() => {
     if (canvasRef.current) {
       const context = canvasRef.current.getContext(
-        "2d"
+        '2d'
       ) as CanvasRenderingContext2D;
 
       const width = canvasRef.current.width;
@@ -38,7 +38,7 @@ export default function PlayerCanvas({
           }
 
           drawRect(context, 5, 5, boxWidth - 10, boxHeight - 10, {
-            fillStyle: "#3a8ab5"
+            fillStyle: '#3a8ab5',
           });
 
           context.restore();

@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { Action } from "./hooks/useClickerReducer";
+import { Action } from './hooks/useClickerReducer';
 
-import { Item } from "./types";
+import { Item } from './types';
 
 export default function AutoClickerItem({
   item,
-  dispatch
+  dispatch,
 }: {
   item: Item;
   dispatch: React.Dispatch<Action>;
@@ -15,8 +15,8 @@ export default function AutoClickerItem({
     const interval = setInterval(() => {
       if (item.owned) {
         dispatch({
-          type: "autoclick",
-          increment: item.increment * item.owned
+          type: 'autoclick',
+          increment: item.increment * item.owned,
         });
       }
     }, item.speed);

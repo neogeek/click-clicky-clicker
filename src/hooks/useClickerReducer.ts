@@ -1,11 +1,11 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
-import { Item } from "../types";
-import items from "../ItemTypes";
+import { Item } from '../types';
+import items from '../ItemTypes';
 
-import { has, get, set } from "../utils/localstorage";
+import { has, get, set } from '../utils/localstorage';
 
 export type State = {
   id: string;
@@ -19,15 +19,15 @@ export type Action = {
   item?: Item;
   increment?: number;
   cost?: number;
-  type: "click" | "autoclick" | "additem" | "reset";
+  type: 'click' | 'autoclick' | 'additem' | 'reset';
 };
 
 const defaultState: State = {
-  id: get("clickerId", uuid()),
+  id: get('clickerId', uuid()),
   number: 0,
   totalNumber: 0,
   speed: 1000,
-  items: [...items]
+  items: [...items],
 };
 
 export const calculateItemCost = (item: Item) => {
@@ -39,39 +39,39 @@ const useClickerReducer = () => {
   return useReducer(
     (state: State, action: Action) => {
       switch (action.type) {
-        case "click": {
+        case 'click': {
           const updated = {
             ...state,
             number: state.number + 1,
-            totalNumber: state.totalNumber + 1
+            totalNumber: state.totalNumber + 1,
           };
 
-          set("gamestate", JSON.stringify(updated));
+          set('gamestate', JSON.stringify(updated));
 
           return updated;
         }
-        case "autoclick": {
+        case 'autoclick': {
           if (!action.increment) {
-            throw new Error("Increment missing from request.");
+            throw new Error('Increment missing from request.');
           }
 
           const updated = {
             ...state,
             number: state.number + action.increment,
-            totalNumber: state.totalNumber + action.increment
+            totalNumber: state.totalNumber + action.increment,
           };
 
-          set("gamestate", JSON.stringify(updated));
+          set('gamestate', JSON.stringify(updated));
 
           return updated;
         }
-        case "additem": {
+        case 'additem': {
           if (!action.item) {
-            throw new Error("Item missing from request.");
+            throw new Error('Item missing from request.');
           }
 
           if (calculateItemCost(action.item) > state.number) {
-            throw new Error("Not enough money");
+            throw new Error('Not enough money');
           }
 
           // increment owned by 1
@@ -84,17 +84,17 @@ const useClickerReducer = () => {
               }
 
               return item;
-            })
+            }),
           };
 
-          set("gamestate", JSON.stringify(updated));
+          set('gamestate', JSON.stringify(updated));
 
           return updated;
         }
-        case "reset": {
+        case 'reset': {
           const updated = { ...defaultState };
 
-          set("gamestate", JSON.stringify(updated));
+          set('gamestate', JSON.stringify(updated));
 
           return updated;
         }
@@ -102,7 +102,7 @@ const useClickerReducer = () => {
           return state;
       }
     },
-    has("gamestate") ? JSON.parse(get("gamestate")) : { ...defaultState }
+    has('gamestate') ? JSON.parse(get('gamestate')) : { ...defaultState }
   );
 };
 

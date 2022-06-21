@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-import { useMotionValue, useSpring } from "framer-motion";
+import { useMotionValue, useSpring } from 'framer-motion';
 
-import { format } from "../utils/number";
+import { format } from '../utils/number';
 
 export default function Counter({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);

@@ -1,1 +1,1 @@
-declare module "pocket-sized-facade.js";
+declare module 'pocket-sized-facade.js';
